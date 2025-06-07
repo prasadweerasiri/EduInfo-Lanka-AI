@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduInfo Lanka AI</title>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0iIzQzNUNENSIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICA8cGF0aCBkPSJNOC4yMTEgMi4wNDdhLjUuNSAwIDAgMC0uNDIyIDBsLTcuNSAzLjVhLjUuNSAwIDAgMCAuMDI1LjkxN2w3LjUgM2EuNS41IDAgMCAwIC4zNzIgMEwxNiA2LjQ2NGEuNS41IDAgMCAwIC4wMjUtLjkxN2wtNy41LTMuNVoiLz4KICA8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00LjE3NiA5LjAzMmEuNS41IDAgMCAwLS42NTYuMzI3bC0uNSAxLjdhLjUuNSAwIDAgMCAuMjk0LjYwNWw0LjUgMS44YS41LjUgMCAwIDAgLjM3MiAwbDQuNS0xLjhhLjUuNSAwIDAgMCAuMjk0LS42MDVsLS41LTEuN2EuNS41IDAgMCAwLS42NTYtLjMyN0w4IDEwLjQ2NnoiLz4KPC9zdmc+">
+    <style>
+      body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      /* Custom scrollbar for better aesthetics */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f0f4f8; /* Lighter track */
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #a0aec0; /* Tailwind gray-500 */
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #718096; /* Tailwind gray-600 */
+      }
+
+      @media print {
+        body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Common print-friendly font */
+          font-size: 11pt;
+          line-height: 1.4;
+          color: #000;
+          background-color: #fff !important; /* Ensure white background */
+          margin: 0;
+          padding: 0;
+        }
+
+        /* Hide non-printable elements */
+        #root > div > header, 
+        main > form, /* QueryInput */
+        main footer,
+        .print-hidden, /* Generic class for buttons, speaker icons etc. */
+        #root > div > main > div:has(> div[class*="LoadingSpinner"]), /* Hide loading spinner container */
+        #root > div > main > div[class*="ErrorDisplay"] /* Hide general error display container */
+        {
+          display: none !important;
+        }
+
+        main {
+          padding: 1cm !important; /* Standard print margin */
+          margin: 0 !important;
+          width: auto !important;
+          max-w-none !important;
+          box-shadow: none !important;
+          border: none !important;
+          background: transparent !important;
+        }
+        
+        /* Styling for the response card itself in print */
+        .response-card-print {
+          box-shadow: none !important;
+          border: 1px solid #ddd !important; /* Light border for separation */
+          padding: 15px !important;
+          margin: 0 0 15px 0 !important; /* Space between multiple printed responses if ever implemented */
+          page-break-inside: avoid; /* Try to keep response content together */
+          background-color: #fff !important;
+        }
+
+        .response-card-print h1, .response-card-print h2, .response-card-print h3 {
+            color: #000 !important;
+            margin-top: 0.5em;
+            margin-bottom: 0.25em;
+        }
+        .response-card-print p, .response-card-print li {
+            color: #000 !important;
+        }
+
+        .response-card-print img {
+            max-width: 100% !important; /* Ensure images fit */
+            max-height: 20cm; /* Limit image height */
+            height: auto !important;
+            display: block;
+            margin-bottom: 10px;
+            border: 1px solid #eee; /* Optional border for images */
+            page-break-inside: avoid;
+        }
+
+        .response-card-print a {
+            text-decoration: underline; /* Make links clear */
+            color: #0000ee; /* Standard blue for links in print */
+        }
+        /* Do not show full URL for source links by default in print to reduce clutter, they are primarily for screen */
+        /* .response-card-print .sources-list a[href]:after { */
+            /* content: " (" attr(href) ")"; */
+            /* font-size: 0.85em; */
+            /* color: #555; */
+        /* } */
+        
+        .response-card-print ul {
+            list-style-position: inside; /* Ensure list markers are visible */
+        }
+        
+        /* Specific styling for source list items in print */
+        .response-card-print .sources-list li {
+             page-break-inside: avoid; /* Try to keep individual source links from splitting across pages */
+        }
+
+
+        /* Ensure prose styles from Tailwind typography are adapted for print */
+        .prose { 
+            /* Reset prose colors for print if they were dark-mode specific */
+            --tw-prose-body: black;
+            --tw-prose-headings: black;
+            --tw-prose-lead: black;
+            --tw-prose-links: #0000ee;
+            --tw-prose-bold: black;
+            --tw-prose-counters: black;
+            --tw-prose-bullets: black;
+            --tw-prose-hr: #ccc;
+            --tw-prose-quotes: black;
+            --tw-prose-quote-borders: #ccc;
+            --tw-prose-captions: black;
+            --tw-prose-code: black;
+            --tw-prose-pre-code: black;
+            --tw-prose-pre-bg: #f5f5f5;
+            --tw-prose-th-borders: #ccc;
+            --tw-prose-td-borders: #ccc;
+        }
+      }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.4.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="antialiased text-slate-800">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
